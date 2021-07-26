@@ -1,0 +1,209 @@
+[
+    [
+        "name" : "BusinessRuleTask",
+        "displayName" : "BusinessRuleTask",
+        "category" : "jbpm-workitems-bpmn2",
+        "description" : "",
+        "defaultHandler" : "mvel: new org.jbpm.process.workitem.bpmn2.BusinessRuleTaskHandler()",
+        "documentation" : "jbpm-workitems-bpmn2/index.html",
+        "icon" : "defaultbusinessruletaskicon.png",
+
+        "parameters" : [
+            "KieSessionName" : new StringDataType(),
+            "KieSessionType" : new StringDataType()
+        ]
+    ],
+
+    [
+        "name" : "DecisionTask",
+        "displayName" : "Decision Task",
+        "category" : "jbpm-workitems-bpmn2",
+        "description" : "",
+        "defaultHandler" : "mvel: new org.jbpm.process.workitem.bpmn2.DecisionTaskHandler()",
+        "documentation" : "jbpm-workitems-bpmn2/index.html",
+        "icon" : "defaultdecisiontaskicon.png",
+
+        "parameters" : [
+            "Model" : new StringDataType(),
+            "Namespace" : new StringDataType(),
+            "Decision" : new StringDataType()
+        ]
+    ],
+
+    [
+        "name" : "Email",
+        "displayName" : "Email",
+        "category" : "jbpm-workitems-email",
+        "description" : "",
+        "defaultHandler" : "mvel: new org.jbpm.process.workitem.email.EmailWorkItemHandler()",
+        "documentation" : "jbpm-workitems-email/index.html",
+        "icon" : "defaultemailicon.png",
+
+        "parameters" : [
+            "Reply-To" : new StringDataType(),
+            "Cc" : new StringDataType(),
+            "Bcc" : new StringDataType(),
+            "From" : new StringDataType(),
+            "To" : new StringDataType(),
+            "Body" : new StringDataType(),
+            "Attachments" : new StringDataType(),
+            "Subject" : new StringDataType(),
+            "Debug" : new StringDataType(),
+            "Template" : new StringDataType()
+        ]
+    ],
+
+    [
+        "name" : "Rest",
+        "displayName" : "Rest",
+        "category" : "jbpm-workitems-rest",
+        "description" : "",
+        "defaultHandler" : "mvel: new org.jbpm.process.workitem.rest.RESTWorkItemHandler()",
+        "documentation" : "jbpm-workitems-rest/index.html",
+        "icon" : "defaultresticon.png",
+
+        "parameters" : [
+            "ConnectTimeout" : new StringDataType(),
+            "ResultClass" : new StringDataType(),
+            "ContentType" : new StringDataType(),
+            "AcceptCharset" : new StringDataType(),
+            "Headers" : new StringDataType(),
+            "AuthUrl" : new StringDataType(),
+            "Method" : new StringDataType(),
+            "ReadTimeout" : new StringDataType(),
+            "Url" : new StringDataType(),
+            "ContentTypeCharset" : new StringDataType(),
+            "HandleResponseErrors" : new StringDataType(),
+            "ContentData" : new StringDataType(),
+            "Username" : new StringDataType(),
+            "Content" : new StringDataType(),
+            "AcceptHeader" : new StringDataType(),
+            "AuthType" : new StringDataType(),
+            "Password" : new StringDataType()
+        ],
+        "results" : [
+            "Result" : new StringDataType()
+        ]
+    ],
+
+    [
+        "name" : "WebService",
+        "displayName" : "WebService",
+        "category" : "jbpm-workitems-webservice",
+        "description" : "",
+        "defaultHandler" : "mvel: new org.jbpm.process.workitem.webservice.WebServiceWorkItemHandler()",
+        "documentation" : "jbpm-workitems-webservice/index.html",
+        "icon" : "defaultwebserviceicon.png",
+
+        "parameters" : [
+            "Endpoint" : new StringDataType(),
+            "Mode" : new StringDataType(),
+            "Parameter" : new StringDataType(),
+            "Operation" : new StringDataType(),
+            "Url" : new StringDataType(),
+            "Namespace" : new StringDataType(),
+            "Interface" : new StringDataType()
+        ],
+        "results" : [
+             "Result" : new StringDataType()
+        ]
+    ],
+
+    [
+        "name" : "Log",
+        "displayName" : "Log",
+        "icon" : "defaultlogicon.png",
+
+        "parameters" : [
+          "Message" : new StringDataType()
+        ]
+    ],
+
+    [
+        "name" : "Milestone",
+        "displayName" : "Milestone",
+        "category" : "Milestone",
+        "icon" : "defaultmilestoneicon.png",
+
+        "parameters" : [
+            "Condition" : new StringDataType()
+        ]
+    ],
+    [
+            "name" : "RestCustomDefinitions",
+            "displayName" : "RestCustomDefinitions",
+            "category" : "poste-custom-workitems",
+            "description" : "",
+            "defaultHandler" : "mvel: new it.poste.workitem.GenericWorkItemHandler()",
+            "documentation" : "",
+            "parameters" : [
+                 "handlerName" : new StringDataType()
+                ,"handlingProcessId" : new StringDataType()
+                ,"handlingStrategy" : new StringDataType()
+                ,"codicePraticaHub" : new StringDataType()
+                ,"codicePraticaUtente" : new StringDataType()
+                ,"statoPratica" : new StringDataType()
+                ,"scartoAperto" : new StringDataType()
+                ,"statoPraticaFinale" : new StringDataType()
+                ,"esitoScarto" : new StringDataType()
+                ,"headers" : new StringDataType()
+                ,"operazione" : new StringDataType()
+                ,"idHub" : new StringDataType()
+                ,"statoScarto" : new StringDataType()
+                ,"tipologiaScarto" : new StringDataType()
+                ,"actionRetry" : new StringDataType()
+                ,"actionSkip" : new StringDataType()
+                ,"actionDelete" : new StringDataType()
+                ,"actionEdit" : new StringDataType()
+
+            ],
+            "results" : [
+                 "esitoOperazione" : new StringDataType()
+                ,"idHub" : new StringDataType()
+                ,"esitoScarto" : new StringDataType()
+                ,"statoPratica" : new StringDataType()
+            ],
+            "icon" : "defaultresticon.png"
+    ],
+    [
+            "name" : "JmsCustomDefinitions",
+            "displayName" : "JmsCustomDefinitions",
+            "category" : "poste-custom-workitems",
+            "description" : "",
+            "defaultHandler" : "mvel: new it.poste.workitem.GenericWorkItemHandler()",
+            "documentation" : "",
+            "parameters" : [
+                 "handlerName" : new StringDataType()
+                ,"codiceServizio" : new StringDataType()
+                ,"codiceFlusso" : new StringDataType()
+                ,"codicePraticaHub" : new StringDataType()
+                ,"codicePraticaUtente" : new StringDataType()
+                ,"idHub" : new StringDataType()
+                ,"commodity" : new StringDataType()
+                ,"businessKey" : new StringDataType()
+                ,"transactionId" : new StringDataType()
+
+            ],
+            "results" : [
+                 "result" : new StringDataType()
+                ,"error" : new StringDataType()
+            ],
+            "icon" : "defaultemailicon.png"
+    ],
+    [
+            "name" : "RuleCustomDefinitions",
+            "displayName" : "RuleCustomDefinitions",
+            "category" : "poste-custom-workitems",
+            "description" : "",
+            "defaultHandler" : "mvel: new it.poste.workitem.GenericWorkItemHandler()",
+            "documentation" : "",
+            "parameters" : [
+                 "handlerName" : new StringDataType()
+                ,"ruleDataInput" : new StringDataType()
+            ],
+            "results" : [
+                 "result" : new StringDataType()
+            ],
+            "icon" : "defaultservicenodeicon.png"
+    ]
+]

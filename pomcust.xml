@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.poste</groupId>
+	<artifactId>bpm-voltura-kjar</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>bpm-voltura-kjar</name>
+	<properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.kie/kie-api -->
+		<dependency>
+		    <groupId>org.kie</groupId>
+		    <artifactId>kie-api</artifactId>
+		    <version>7.55.0.Final</version>
+		    <scope>provided</scope>
+		</dependency>
+        <!-- https://mvnrepository.com/artifact/org.kie/kie-internal -->
+		<dependency>
+		    <groupId>org.kie</groupId>
+		    <artifactId>kie-internal</artifactId>
+		    <version>7.55.0.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.optaplanner/optaplanner-core -->
+		<dependency>
+		    <groupId>org.optaplanner</groupId>
+		    <artifactId>optaplanner-core</artifactId>
+		    <version>7.55.0.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.optaplanner/optaplanner-persistence-jaxb -->
+		<dependency>
+		    <groupId>org.optaplanner</groupId>
+		    <artifactId>optaplanner-persistence-jaxb</artifactId>
+		    <version>7.55.0.Final</version>
+		</dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>        
+        <!-- https://mvnrepository.com/artifact/org.drools/drools-compiler -->
+		<dependency>
+		    <groupId>org.drools</groupId>
+		    <artifactId>drools-compiler</artifactId>
+		    <version>7.55.0.Final</version>
+		</dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-maven-plugin</artifactId>
+                <version>7.55.0.Final</version>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+   
+</project>

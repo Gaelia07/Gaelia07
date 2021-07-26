@@ -1,0 +1,44 @@
+<project-repositories>
+  <repositories>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>nexus</id>
+        <url>https://nexus.alm.poste.it/repository/common-library-snapshot</url>
+        <source>DISTRIBUTION_MANAGEMENT</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>ArtifactoryCentral</id>
+        <url>http://arti0.sede.corp.sanpaoloimi.com:8081/artifactory/remote-repos</url>
+        <source>PROJECT</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>nexus-maven-central</id>
+        <url>https://nexus.alm.poste.it/nexus/repository/maven-public</url>
+        <source>PROJECT</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>local</id>
+        <url>/home/maspesi/.m2/repository</url>
+        <source>LOCAL</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>Artifactory local-repos</id>
+        <url>http://arti0.sede.corp.sanpaoloimi.com:8081/artifactory/local-repos</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+  </repositories>
+</project-repositories>
