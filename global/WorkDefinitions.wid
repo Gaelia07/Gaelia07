@@ -134,22 +134,11 @@
             "displayName" : "RestCustomDefinitions",
             "category" : "poste-custom-workitems",
             "description" : "",
-            "defaultHandler" : "mvel: new com.poste.posteenergy.rest.RestCustomWorkItemHandler()",
+            "defaultHandler" : "mvel: new it.poste.workitem.rest.RestCustomWorkItemHandler()",
             "documentation" : "",
-            "parameters" : [
-                 "codicePraticaUtente" : new StringDataType()
-                ,"updateType" : new StringDataType()
-                ,"businessKey" : new StringDataType()
-                ,"transactionId" : new StringDataType()
-                ,"codicePraticaHub" : new StringDataType()
-                ,"codiceFlusso" : new StringDataType()
-
-            ],
+            "parameters" : [],
             "results" : [
                  "responseCode" : new StringDataType()
-            ],
-            "mavenDependencies" : [
-                 "com.poste.posteenergy:poste-custom-workitems:1.0.0"
             ],
             "icon" : "defaultresticon.png"
     ],
@@ -161,21 +150,13 @@
             "defaultHandler" : "mvel: new com.poste.posteenergy.jms.JmsCustomWorkItemHandler()",
             "documentation" : "",
             "parameters" : [
-                 "codiceFlusso" : new StringDataType()
-                ,"codicePraticaUtente" : new StringDataType()
-                ,"commodity" : new StringDataType()
-                ,"businessKey" : new StringDataType()
-                ,"transactionId" : new StringDataType()
-                ,"codicePraticaHub" : new StringDataType()
-
+                 
             ],
             "results" : [
                  "result" : new StringDataType()
                 ,"error" : new StringDataType()
             ],
-            "mavenDependencies" : [
-                 "com.poste.posteenergy:poste-custom-workitems:1.0.0"
-            ],
+           
             "icon" : "defaultemailicon.png"
     ]
 ]
