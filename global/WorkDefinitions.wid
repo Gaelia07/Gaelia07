@@ -147,7 +147,7 @@
             "displayName" : "JmsCustomDefinitions",
             "category" : "poste-custom-workitems",
             "description" : "",
-            "defaultHandler" : "mvel: new com.poste.posteenergy.jms.JmsCustomWorkItemHandler()",
+            "defaultHandler" : "mvel: new it.poste.workitem.jms.JmsCustomWorkItemHandler()",
             "documentation" : "",
             "parameters" : [
                  
@@ -155,6 +155,7 @@
             "results" : [
                  "result" : new StringDataType()
                 ,"error" : new StringDataType()
+                ,"esitoLettura" : new StringDataType()
             ],
            
             "icon" : "defaultemailicon.png"
