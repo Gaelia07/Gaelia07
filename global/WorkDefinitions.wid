@@ -134,7 +134,7 @@
             "displayName" : "RestCustomDefinitions",
             "category" : "poste-custom-workitems",
             "description" : "",
-            "defaultHandler" : "mvel: new com.poste.posteenergy.rest.RestCustomWorkItemHandler()",
+            "defaultHandler" : "mvel: new it.poste.workitem.rest.RestCustomWorkItemHandler()",
             "documentation" : "",
             "parameters" : [
                  "codicePraticaUtente" : new StringDataType()
