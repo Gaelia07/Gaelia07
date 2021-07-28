@@ -134,34 +134,22 @@
             "displayName" : "RestCustomDefinitions",
             "category" : "poste-custom-workitems",
             "description" : "",
-            "defaultHandler" : "mvel: new it.poste.workitem.GenericWorkItemHandler()",
+            "defaultHandler" : "mvel: new com.poste.posteenergy.rest.RestCustomWorkItemHandler()",
             "documentation" : "",
             "parameters" : [
-                 "handlerName" : new StringDataType()
-                ,"handlingProcessId" : new StringDataType()
-                ,"handlingStrategy" : new StringDataType()
+                 "codicePraticaUtente" : new StringDataType()
+                ,"updateType" : new StringDataType()
+                ,"businessKey" : new StringDataType()
+                ,"transactionId" : new StringDataType()
                 ,"codicePraticaHub" : new StringDataType()
-                ,"codicePraticaUtente" : new StringDataType()
-                ,"statoPratica" : new StringDataType()
-                ,"scartoAperto" : new StringDataType()
-                ,"statoPraticaFinale" : new StringDataType()
-                ,"esitoScarto" : new StringDataType()
-                ,"headers" : new StringDataType()
-                ,"operazione" : new StringDataType()
-                ,"idHub" : new StringDataType()
-                ,"statoScarto" : new StringDataType()
-                ,"tipologiaScarto" : new StringDataType()
-                ,"actionRetry" : new StringDataType()
-                ,"actionSkip" : new StringDataType()
-                ,"actionDelete" : new StringDataType()
-                ,"actionEdit" : new StringDataType()
+                ,"codiceFlusso" : new StringDataType()
 
             ],
             "results" : [
-                 "esitoOperazione" : new StringDataType()
-                ,"idHub" : new StringDataType()
-                ,"esitoScarto" : new StringDataType()
-                ,"statoPratica" : new StringDataType()
+                 "responseCode" : new StringDataType()
+            ],
+            "mavenDependencies" : [
+                 "com.poste.posteenergy:poste-custom-workitems:1.0.0"
             ],
             "icon" : "defaultresticon.png"
     ],
@@ -170,40 +158,24 @@
             "displayName" : "JmsCustomDefinitions",
             "category" : "poste-custom-workitems",
             "description" : "",
-            "defaultHandler" : "mvel: new it.poste.workitem.GenericWorkItemHandler()",
+            "defaultHandler" : "mvel: new com.poste.posteenergy.jms.JmsCustomWorkItemHandler()",
             "documentation" : "",
             "parameters" : [
-                 "handlerName" : new StringDataType()
-                ,"codiceServizio" : new StringDataType()
-                ,"codiceFlusso" : new StringDataType()
-                ,"codicePraticaHub" : new StringDataType()
+                 "codiceFlusso" : new StringDataType()
                 ,"codicePraticaUtente" : new StringDataType()
-                ,"idHub" : new StringDataType()
                 ,"commodity" : new StringDataType()
                 ,"businessKey" : new StringDataType()
                 ,"transactionId" : new StringDataType()
+                ,"codicePraticaHub" : new StringDataType()
 
             ],
             "results" : [
                  "result" : new StringDataType()
                 ,"error" : new StringDataType()
             ],
+            "mavenDependencies" : [
+                 "com.poste.posteenergy:poste-custom-workitems:1.0.0"
+            ],
             "icon" : "defaultemailicon.png"
-    ],
-    [
-            "name" : "RuleCustomDefinitions",
-            "displayName" : "RuleCustomDefinitions",
-            "category" : "poste-custom-workitems",
-            "description" : "",
-            "defaultHandler" : "mvel: new it.poste.workitem.GenericWorkItemHandler()",
-            "documentation" : "",
-            "parameters" : [
-                 "handlerName" : new StringDataType()
-                ,"ruleDataInput" : new StringDataType()
-            ],
-            "results" : [
-                 "result" : new StringDataType()
-            ],
-            "icon" : "defaultservicenodeicon.png"
     ]
 ]
