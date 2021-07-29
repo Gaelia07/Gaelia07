@@ -149,9 +149,7 @@
             "description" : "",
             "defaultHandler" : "mvel: new it.poste.workitem.jms.JmsCustomWorkItemHandler()",
             "documentation" : "",
-            "parameters" : [
-                 
-            ],
+            "parameters" : [],
             "results" : [
                  "result" : new StringDataType()
                 ,"error" : new StringDataType()
