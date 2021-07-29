@@ -130,32 +130,36 @@
         ]
     ],
     [
-            "name" : "RestCustomDefinitions",
-            "displayName" : "RestCustomDefinitions",
-            "category" : "poste-custom-workitems",
-            "description" : "",
-            "defaultHandler" : "mvel: new it.poste.workitem.rest.RestCustomWorkItemHandler()",
-            "documentation" : "",
-            "parameters" : [],
-            "results" : [
-                 "responseCode" : new StringDataType()
-            ],
-            "icon" : "defaultresticon.png"
+        "name" : "RestCustomDefinitions",
+        "displayName" : "RestCustomDefinitions",
+        "category" : "poste-custom-workitems",
+        "description" : "",
+        "defaultHandler" : "mvel: new it.poste.workitem.rest.RestCustomWorkItemHandler()",
+        "documentation" : "",
+        "parameters" : [
+            "Operation" : new StringDataType()
+        ],
+        "results" : [
+             "responseCode" : new StringDataType()
+        ],
+        "icon" : "defaultresticon.png"
     ],
     [
-            "name" : "JmsCustomDefinitions",
-            "displayName" : "JmsCustomDefinitions",
-            "category" : "poste-custom-workitems",
-            "description" : "",
-            "defaultHandler" : "mvel: new it.poste.workitem.jms.JmsCustomWorkItemHandler()",
-            "documentation" : "",
-            "parameters" : [],
-            "results" : [
-                 "result" : new StringDataType()
-                ,"error" : new StringDataType()
-                ,"esitoLettura" : new StringDataType()
-            ],
-           
-            "icon" : "defaultemailicon.png"
+        "name" : "JmsCustomDefinitions",
+        "displayName" : "JmsCustomDefinitions",
+        "category" : "poste-custom-workitems",
+        "description" : "",
+        "defaultHandler" : "mvel: new it.poste.workitem.jms.JmsCustomWorkItemHandler()",
+        "documentation" : "",
+        "parameters" : [
+            "Operation" : new StringDataType()
+        ],
+        "results" : [
+             "result" : new StringDataType()
+            ,"error" : new StringDataType()
+            ,"esitoLettura" : new StringDataType()
+        ],
+       
+        "icon" : "defaultemailicon.png"
     ]
 ]
