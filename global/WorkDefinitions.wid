@@ -152,12 +152,15 @@
         "defaultHandler" : "mvel: new it.poste.workitem.jms.JmsCustomWorkItemHandler()",
         "documentation" : "",
         "parameters" : [
-            "Operation" : new StringDataType()
+            "Operation" : new StringDataType(),
+            "esitoLettura" : new StringDataType(),
+            "chiusura" : new StringDataType()
         ],
         "results" : [
              "result" : new StringDataType()
             ,"error" : new StringDataType()
             ,"esitoLettura" : new StringDataType()
+            ,"chiusura" : new StringDataType()
         ],
        
         "icon" : "defaultemailicon.png"

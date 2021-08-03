@@ -1,0 +1,25 @@
+//created on: 2-ago-2021
+import com.poste.posteenrgy.Message;
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "controllo regole"
+	dialect "mvel"
+	no-loop true
+	ruleflow-group "RegolaGroup"
+    when
+        $m : Message( status == "HELLO")
+    then
+        System.out.println("Test invocazione drools");//actions
+        $m.setMessage( "Goodbye cruel world" );
+        $m.setStatus( "GOODBYE" );
+        update( $m );
+end
+
+

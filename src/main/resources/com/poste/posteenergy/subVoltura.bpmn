@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- origin at X=0.0 Y=0.0 -->
 <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn20="http://www.omg.org/bpmn20" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xmlns:ns="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_9bkbcPBuEeuPEN_v0Yq8GQ" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.3.Final-v20210519-2007-B1" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="ItemDefinition_1" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="ItemDefinition_2" isCollection="false" structureRef="com.poste.posteenrgy.Message"/>
   <bpmn2:process id="bpm-voltura-kjar.subVoltura" drools:packageName="com.poste.posteenergy" drools:version="1.0" drools:adHoc="false" name="subVoltura" isExecutable="true" processType="Public">
+    <bpmn2:extensionElements>
+      <drools:import name="com.poste.posteenrgy.Message"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="variabileSubVoltura" itemSubjectRef="ItemDefinition_2" name="variabileSubVoltura"/>
     <bpmn2:sequenceFlow id="_95722BE9-82E7-4CCF-9A33-5FDDD0566E35" sourceRef="_4D9BEE60-65B1-453A-898D-E8BC1C1B1EF8" targetRef="_3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5">
       <bpmn2:extensionElements>
         <drools:metaData name="isAutoConnection.source">
@@ -22,7 +28,6 @@
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="_7F3E8463-82B0-43A9-A76B-72F255DC6D56" sourceRef="_3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5" targetRef="_55A75463-8C7B-4533-8A1B-51A97877B8B1"/>
     <bpmn2:scriptTask id="_3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5" name="Task" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -30,8 +35,12 @@
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_95722BE9-82E7-4CCF-9A33-5FDDD0566E35</bpmn2:incoming>
-      <bpmn2:outgoing>_7F3E8463-82B0-43A9-A76B-72F255DC6D56</bpmn2:outgoing>
-      <bpmn2:script>System.out.println(&quot;Subtask 2&quot;);</bpmn2:script>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:script>System.out.println(&quot;Subtask 2&quot;);
+com.poste.posteenrgy.Message msg = new com.poste.posteenrgy.Message();
+msg.setMessage(&quot;HELLO&quot;);
+msg.setStatus(&quot;HELLO&quot;);
+kcontext.setVariable(&quot;variabile&quot;, msg);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:startEvent id="_9F6A271C-A1C7-4179-940E-F1AC6E4CD696">
       <bpmn2:extensionElements>
@@ -72,56 +81,100 @@
           <drools:metaValue><![CDATA[]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>_7F3E8463-82B0-43A9-A76B-72F255DC6D56</bpmn2:incoming>
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:sequenceFlow id="SequenceFlow_1" drools:priority="1" sourceRef="_AC0DDD22-2223-4E64-B6A6-78D536C83CDF" targetRef="_4D9BEE60-65B1-453A-898D-E8BC1C1B1EF8"/>
+    <bpmn2:businessRuleTask id="BusinessRuleTask_1" drools:ruleFlowGroup="RegolaGroup" name="Business Rule Task 1" isForCompensation="true" implementation="##unspecified">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Business Rule Task 1]]></drools:metaValue>
+        </drools:metaData>
+        <drools:onEntry-script scriptFormat="http://www.java.com/java">
+          <drools:script>System.out.println(&quot;prima di drools&quot;);
+com.poste.posteenrgy.Message msg = (com.poste.posteenrgy.Message) kcontext.getVariable(&quot;variabile&quot;);
+System.out.println(&quot;Message Status: &quot;+msg.getStatus());
+System.out.println(&quot;Message msg: &quot;+msg.getMessage());</drools:script>
+        </drools:onEntry-script>
+        <drools:onExit-script scriptFormat="http://www.java.com/java">
+          <drools:script>System.out.println(&quot;dopo di drools&quot;);</drools:script>
+        </drools:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_6">
+        <bpmn2:dataInput id="DataInput_1" itemSubjectRef="ItemDefinition_1" name="variabile"/>
+        <bpmn2:inputSet id="InputSet_6" name="Input Set 6">
+          <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_6" name="Output Set 6"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:sourceRef>variabileSubVoltura</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_1</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:businessRuleTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" drools:priority="1" sourceRef="_3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5" targetRef="BusinessRuleTask_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" drools:priority="1" sourceRef="BusinessRuleTask_1" targetRef="_55A75463-8C7B-4533-8A1B-51A97877B8B1"/>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="_9blCgvBuEeuPEN_v0Yq8GQ">
     <bpmndi:BPMNPlane id="_9blCg_BuEeuPEN_v0Yq8GQ" bpmnElement="bpm-voltura-kjar.subVoltura">
       <bpmndi:BPMNShape id="shape__55A75463-8C7B-4533-8A1B-51A97877B8B1" bpmnElement="_55A75463-8C7B-4533-8A1B-51A97877B8B1">
-        <dc:Bounds height="56.0" width="56.0" x="719.0" y="168.0"/>
-        <bpmndi:BPMNLabel/>
+        <dc:Bounds height="56.0" width="56.0" x="719.0" y="320.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_1"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__AC0DDD22-2223-4E64-B6A6-78D536C83CDF" bpmnElement="_AC0DDD22-2223-4E64-B6A6-78D536C83CDF">
         <dc:Bounds height="102.0" width="154.0" x="436.0" y="136.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_2">
           <dc:Bounds height="17.0" width="32.0" x="497.0" y="178.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_null" bpmnElement="_4D9BEE60-65B1-453A-898D-E8BC1C1B1EF8">
         <dc:Bounds height="56.0" width="56.0" x="485.0" y="24.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__9F6A271C-A1C7-4179-940E-F1AC6E4CD696" bpmnElement="_9F6A271C-A1C7-4179-940E-F1AC6E4CD696">
         <dc:Bounds height="56.0" width="56.0" x="300.0" y="159.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5" bpmnElement="_3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5">
         <dc:Bounds height="102.0" width="154.0" x="670.0" y="1.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_5">
           <dc:Bounds height="17.0" width="32.0" x="731.0" y="43.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="edge_shape__3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5_to_shape__55A75463-8C7B-4533-8A1B-51A97877B8B1" bpmnElement="_7F3E8463-82B0-43A9-A76B-72F255DC6D56" sourceElement="shape__3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5" targetElement="shape__55A75463-8C7B-4533-8A1B-51A97877B8B1">
-        <di:waypoint xsi:type="dc:Point" x="747.0" y="52.0"/>
-        <di:waypoint xsi:type="dc:Point" x="747.0" y="196.0"/>
-        <bpmndi:BPMNLabel/>
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BPMNShape_BusinessRuleTask_1" bpmnElement="BusinessRuleTask_1" isExpanded="true">
+        <dc:Bounds height="50.0" width="110.0" x="692.0" y="165.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_6">
+          <dc:Bounds height="34.0" width="107.0" x="693.0" y="173.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="edge_shape__9F6A271C-A1C7-4179-940E-F1AC6E4CD696_to_shape__AC0DDD22-2223-4E64-B6A6-78D536C83CDF" bpmnElement="_BA424E08-6154-49CC-82B8-87FB361F4711" sourceElement="shape__9F6A271C-A1C7-4179-940E-F1AC6E4CD696" targetElement="shape__AC0DDD22-2223-4E64-B6A6-78D536C83CDF">
         <di:waypoint xsi:type="dc:Point" x="356.0" y="187.0"/>
         <di:waypoint xsi:type="dc:Point" x="436.0" y="187.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_7"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_null_to_shape__3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5" bpmnElement="_95722BE9-82E7-4CCF-9A33-5FDDD0566E35" sourceElement="shape_null" targetElement="shape__3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5">
         <di:waypoint xsi:type="dc:Point" x="541.0" y="52.0"/>
         <di:waypoint xsi:type="dc:Point" x="670.0" y="52.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_8"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="shape__AC0DDD22-2223-4E64-B6A6-78D536C83CDF" targetElement="shape_null">
         <di:waypoint xsi:type="dc:Point" x="513.0" y="136.0"/>
         <di:waypoint xsi:type="dc:Point" x="513.0" y="108.0"/>
         <di:waypoint xsi:type="dc:Point" x="513.0" y="80.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_9"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="shape__3C0AE21B-9FAE-4189-8ACF-E11DDE11C6A5" targetElement="BPMNShape_BusinessRuleTask_1">
+        <di:waypoint xsi:type="dc:Point" x="747.0" y="103.0"/>
+        <di:waypoint xsi:type="dc:Point" x="747.0" y="134.0"/>
+        <di:waypoint xsi:type="dc:Point" x="747.0" y="165.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_10"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_BusinessRuleTask_1" targetElement="shape__55A75463-8C7B-4533-8A1B-51A97877B8B1">
+        <di:waypoint xsi:type="dc:Point" x="747.0" y="215.0"/>
+        <di:waypoint xsi:type="dc:Point" x="747.0" y="267.0"/>
+        <di:waypoint xsi:type="dc:Point" x="747.0" y="320.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_11"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
